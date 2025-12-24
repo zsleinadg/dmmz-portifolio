@@ -1,0 +1,68 @@
+.hamburguer {
+    width: 30px; /* largura do botão */
+    height: 24px; /* altura total do conjunto */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    z-index: 50;
+}
+
+.hamburguer span {
+    width: 100%;
+    height: 4px;
+    background-color: #1e2939;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Estado Aberto (X) */
+.open span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 40;
+
+  clip-path: circle(0% at 100% 0%);
+  transition: clip-path 1s ease-in-out;
+}
+
+.overlayOpen {
+  clip-path: circle(150% at 100% 0%);
+}
+
+/* MENU CENTRAL */
+.overlayMenu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.overlayMenu a {
+  font-size: 2rem;
+  color: #1e2939;
+  transition: color 0.3s;
+}
+
+.overlayMenu a:hover {
+  color: #4f46e5;
+}
