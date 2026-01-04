@@ -6,28 +6,53 @@ import Link from "next/link"
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
+    
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault()
+
+        const element = document.getElementById(id)
+        if (element) {
+            const topo = element.offsetTop
+
+            window.scrollTo({
+                top: topo - 80,
+                behavior: "smooth"
+            })
+
+            setIsOpen(false)
+        }
+    }
 
     return (
         <>
             <header className="max-w-7xl mx-auto px-5 py-6 flex justify-between items-center">
-                <h1 className="text-4xl font-bold bg-linear-to-b italic pr-1 from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+                <h1 className="text-4xl font-bold bg-linear-to-b italic pr-1 from-indigo-600 to-purple-900 text-transparent bg-clip-text select-none">
                     DM
                 </h1>
 
                 <nav className=" hidden md:block">
                     <ul className="flex gap-3 items-center text-gray-800 text-lg">
                         <li>
-                            <Link href="#" className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900 ">
+                            <Link 
+                            href="#about" 
+                            onClick={(e) => handleScroll(e, "about")}
+                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900 ">
                                 Sobre mim
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
+                            <Link 
+                            href="#"
+                            onClick={(e) => handleScroll(e, "")}
+                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
                                 Experiência
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
+                            <Link 
+                            href="#"
+                            onClick={(e) => handleScroll(e, "")}
+                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
                                 Contato
                             </Link>
                         </li>
@@ -57,13 +82,13 @@ export function Header() {
                     className={styles.overlayMenu}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <Link href="#" onClick={() => setIsOpen(false)}>
+                    <Link href="#about" onClick={(e) => handleScroll(e, "about")}>
                         Sobre mim
                     </Link>
-                    <Link href="#" onClick={() => setIsOpen(false)}>
+                    <Link href="#" onClick={(e) => handleScroll(e, "")}>
                         Experiência
                     </Link>
-                    <Link href="#" onClick={() => setIsOpen(false)}>
+                    <Link href="#" onClick={(e) => handleScroll(e, "")}>
                         Contato
                     </Link>
                 </nav>
