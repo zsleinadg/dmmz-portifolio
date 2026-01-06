@@ -29,7 +29,7 @@ export function Contact() {
 
         <form action="https://api.web3forms.com/submit" method="POST" className="flex flex-col gap-4">
 
-          <input type="hidden" name="access_key" value="5b12bf76-e3a4-40d1-aed8-816f9c22bef6" />
+          <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
 
           <input 
             type="text" 
