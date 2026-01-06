@@ -56,7 +56,7 @@ export function Hero() {
             </li>
             <li>
               <a
-                href="https://drive.google.com/file/d/1Ku7a1AqGYCG5GwdMuA6DAL7E7zXhXPHZ/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1AX9OKL-KpFL6uNmJHzJ2I9lWC2l3C2ov/view"
                 target="_blank"
                 className="flex items-center gap-2 hover:text-indigo-600 transition-all hover:-translate-y-1"
               >
