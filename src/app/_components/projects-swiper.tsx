@@ -42,7 +42,7 @@ export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
                 alt={`Slide ${index + 1}`}
                 fill
                 className="object-contain" 
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 priority={index === 0}
               />
             </div>
