@@ -3,7 +3,7 @@ import { ProjectsSwiper } from "../_components/projects-swiper";
 
 export function Projects() {
   return (
-    <section className="w-full px-4 mx-auto py-16">
+    <section id="projects" className="w-full px-4 mx-auto py-16">
       <h2 className="text-3xl font-bold text-center mb-16 sm:text-4xl">
         Projetos
       </h2>
@@ -40,7 +40,7 @@ export function Projects() {
                 <a
                   href={project.linkProject}
                   target="_blank"
-                  className="px-5 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition"
+                  className="px-5 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition not-sm:w-full not-sm:text-center"
                 >
                   Ver projeto
                 </a>
@@ -48,7 +48,7 @@ export function Projects() {
                 <a
                   href={project.linkRepo}
                   target="_blank"
-                  className="px-5 py-2 rounded-lg border border-gray-300 text-sm font-medium hover:bg-gray-200 transition"
+                  className="px-5 py-2 rounded-lg border border-gray-300 text-sm font-medium hover:bg-gray-200 transition not-sm:w-full not-sm:text-center"
                 >
                   Ver código
                 </a>

@@ -4,9 +4,15 @@ import { useState } from "react"
 import styles from "./header.module.css"
 import Link from "next/link"
 
+const NAV_LINKS = [
+    { name: "Sobre mim", href: "#about", id: "about" },
+    { name: "Projetos", href: "#projects", id: "projects" },
+    { name: "Contato", href: "#contact", id: "contact" }
+]
+
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
-    
+
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault()
 
@@ -30,33 +36,19 @@ export function Header() {
                     DM
                 </h1>
 
-                <nav className=" hidden md:block">
+                <nav className="hidden md:block">
                     <ul className="flex gap-3 items-center text-gray-800 text-lg">
-                        <li>
-                            <Link 
-                            href="#about" 
-                            onClick={(e) => handleScroll(e, "about")}
-                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900 ">
-                                Sobre mim
-                            </Link>
-                        </li>
-                        <li>
-                            <Link 
-                            href="#"
-                            onClick={(e) => handleScroll(e, "")}
-                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
-                                Experiência
-                            </Link>
-                        </li>
-                        <li>
-                            <Link 
-                            href="#"
-                            onClick={(e) => handleScroll(e, "")}
-                            className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900">
-                                Contato
-                            </Link>
-                        </li>
-
+                        {NAV_LINKS.map((link) => (
+                            <li key={link.id}>
+                                <Link
+                                    href={link.href}
+                                    onClick={(e) => handleScroll(e, link.id)}
+                                    className="select-none relative transition hover:text-indigo-600 before:content-['{'] after:content-['}'] before:opacity-0 after:opacity-0 hover:before:opacity-100 hover:after:opacity-100 before:transition-all after:transition-all before:text-purple-900 after:text-purple-900"
+                                >
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
@@ -72,7 +64,6 @@ export function Header() {
                     </button>
                 </div>
 
-
             </header>
             <div
                 className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ""}`}
@@ -82,15 +73,15 @@ export function Header() {
                     className={styles.overlayMenu}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <Link href="#about" onClick={(e) => handleScroll(e, "about")}>
-                        Sobre mim
-                    </Link>
-                    <Link href="#" onClick={(e) => handleScroll(e, "")}>
-                        Experiência
-                    </Link>
-                    <Link href="#" onClick={(e) => handleScroll(e, "")}>
-                        Contato
-                    </Link>
+                    {NAV_LINKS.map((link) => (
+                        <Link
+                            key={link.id}
+                            href={link.href}
+                            onClick={(e) => handleScroll(e, link.id)}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
                 </nav>
             </div>
         </>

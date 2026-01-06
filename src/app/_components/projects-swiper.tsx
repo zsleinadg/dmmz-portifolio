@@ -31,7 +31,7 @@ export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
         navigation={true}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={images.length > 1}
+        loop={false}
         className="w-full h-full rounded-lg"
       >
         {images.map((src, index) => (

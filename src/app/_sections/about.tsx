@@ -1,81 +1,76 @@
-import {
-    SiHtml5,
-    SiCss3,
-    SiJavascript,
-    SiTypescript,
-    SiTailwindcss,
-    SiReact,
-    SiNextdotjs,
-    SiFirebase,
-    SiSupabase
-} from "react-icons/si"
-import { ReactNode } from "react"
-
-interface TechItemProps {
-    icon: ReactNode,
-    name: string,
-    color: string
-}
-
-const techs: TechItemProps[] = [
-    { icon: <SiHtml5 />, name: "HTML5", color: "text-orange-600" },
-    { icon: <SiCss3 />, name: "CSS3", color: "text-blue-600" },
-    { icon: <SiJavascript />, name: "JavaScript", color: "text-yellow-400" },
-    { icon: <SiTypescript />, name: "TypeScript", color: "text-blue-500" },
-    { icon: <SiTailwindcss />, name: "Tailwind", color: "text-cyan-500" },
-    { icon: <SiReact />, name: "React", color: "text-sky-500" },
-    { icon: <SiNextdotjs />, name: "Next.js", color: "text-gray-900" },
-    { icon: <SiFirebase />, name: "Firebase", color: "text-amber-500" },
-    { icon: <SiSupabase />, name: "Supabase", color: "text-emerald-500" },
-]
-
+import { techs } from "@/data/skills"
+import { courses } from "@/data/courses"
 
 export function About() {
-
-    function Tech({ icon, name, color }: TechItemProps) {
-        return (
-            <div className={`flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110`}>
-                <div className={`text-4xl ${color}`}>{icon}</div>
-                <span className="text-sm font-medium text-gray-600">{name}</span>
-            </div>
-        )
-    }
-
     return (
         <section id="about" className="w-full px-4 pb-16">
-
-            <div className=" max-w-4xl mx-auto flex flex-col items-center text-center gap-10">
-
-                <h1 className=" text-3xl font-bold
-                sm:text-4xl md:text-5xl">
-                    Sobre mim
-                </h1>
-
-                <p className="text-base leading-relaxed text-gray-600
-                sm:text-lg md:text-xl">
-                    Sou um desenvolvedor Front-End focado em criar interfaces modernas,
-                    responsivas e acessíveis, utilizando tecnologias atuais e boas práticas
-                    de desenvolvimento.
-                </p>
+            <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-12">
+                
+                <div className="space-y-6">
+                    <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                        Sobre mim
+                    </h1>
+                    <p className="text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl max-w-2xl mx-auto">
+                        Sou um desenvolvedor Front-End focado em criar interfaces modernas,
+                        responsivas e acessíveis, utilizando tecnologias atuais e boas práticas
+                        de desenvolvimento.
+                    </p>
+                </div>
 
                 <div className="w-full">
-                    <h2 className=" text-xl font-semibold mb-6 text-gray-800">
+                    <h2 className="text-xl font-semibold mb-8 text-gray-800 flex items-center justify-center gap-2">
+                        <span className="h-px w-8 bg-gray-300"></span>
                         Tecnologias que utilizo
+                        <span className="h-px w-8 bg-gray-300"></span>
                     </h2>
 
-                    <div className=" grid grid-cols-3 gap-6
-                    sm:grid-cols-4 md:grid-cols-5">
-                        {techs.map((tech) => (
-                            <Tech
-                                key={tech.name}
-                                icon={tech.icon}
-                                name={tech.name}
-                                color={tech.color} />
+                    <div className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5">
+                        {techs.map((tech) => {
+                            const Icon = tech.icon;
+                            return (
+                                <div key={tech.name} className="flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110">
+                                    <div className={`text-4xl ${tech.color}`}>
+                                        <Icon /> 
+                                    </div>
+                                    <span className="text-sm font-medium text-gray-600">{tech.name}</span>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                <div className="w-full pt-10 border-t border-gray-200">
+                    <h2 className="text-xl font-semibold mb-8 text-gray-800 flex items-center justify-center gap-2">
+                         <span className="h-px w-8 bg-gray-300"></span>
+                         Formação e Cursos
+                         <span className="h-px w-8 bg-gray-300"></span>
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                        {courses.map((course, index) => (
+                            <div 
+                                key={index} 
+                                className="p-5 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
+                            >
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className="font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                                        {course.title}
+                                    </h3>
+                                    <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md ${
+                                        course.status === 'Concluído' 
+                                        ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' 
+                                        : 'bg-amber-50 text-amber-600 border border-amber-100'
+                                    }`}>
+                                        {course.status}
+                                    </span>
+                                </div>
+                                <p className="text-gray-500 text-sm font-medium">{course.school}</p>
+                            </div>
                         ))}
                     </div>
                 </div>
-            </div>
 
+            </div>
         </section>
     )
 }

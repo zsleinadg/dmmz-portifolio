@@ -1,6 +1,6 @@
 .hamburguer {
-    width: 30px; /* largura do botão */
-    height: 24px; /* altura total do conjunto */
+    width: 30px;
+    height: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,7 +20,6 @@
     transition: all 0.3s ease;
 }
 
-/* Estado Aberto (X) */
 .open span:nth-child(1) {
     transform: rotate(45deg) translate(7px, 7px);
 }
@@ -47,7 +46,6 @@
   clip-path: circle(150% at 100% 0%);
 }
 
-/* MENU CENTRAL */
 .overlayMenu {
   height: 100%;
   display: flex;
