@@ -9,14 +9,16 @@ export function Projects() {
       </h2>
 
       <div className="flex flex-col gap-20">
-        {projectsData.map((project) => (
+        {projectsData.map((project, index) => (
           <div
             key={project.id}
             className="grid grid-cols-2 gap-10 items-center not-lg:grid-cols-1"
           >
-            
             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100 border border-gray-200">
-              <ProjectsSwiper images={project.images} />
+              <ProjectsSwiper 
+                images={project.images} 
+                isFirstProject={index === 0} 
+              />
             </div>
 
             <div className="flex flex-col gap-4">
@@ -30,7 +32,7 @@ export function Projects() {
 
               <ul className="flex flex-wrap gap-2 text-sm text-gray-500 select-none">
                 {project.techs.map((tech) => (
-                  <li key={tech} className="px-3 py-1 bg-gray-200 rounded-full">
+                  <li key={tech} className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full font-medium">
                     {tech}
                   </li>
                 ))}
@@ -48,7 +50,7 @@ export function Projects() {
                 <a
                   href={project.linkRepo}
                   target="_blank"
-                  className="px-5 py-2 rounded-lg border border-gray-300 text-sm font-medium hover:bg-gray-200 transition not-sm:w-full not-sm:text-center"
+                  className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-200 transition not-sm:w-full not-sm:text-center"
                 >
                   Ver código
                 </a>

@@ -11,9 +11,10 @@ import "swiper/css/pagination";
 
 interface ProjectsSwiperProps {
   images: string[];
+  isFirstProject: boolean;
 }
 
-export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
+export function ProjectsSwiper({ images, isFirstProject }: ProjectsSwiperProps) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -36,14 +37,15 @@ export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full flex items-center justify-center bg-gray-100">
+            <div className="relative w-full aspect-video flex items-center justify-center bg-gray-100 overflow-hidden">
               <Image
                 src={src}
                 alt={`Slide ${index + 1}`}
                 fill
                 className="object-contain" 
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
+                priority={isFirstProject && index === 0}
+                loading={isFirstProject && index === 0 ? "eager" : "lazy"}
               />
             </div>
           </SwiperSlide>
@@ -52,7 +54,7 @@ export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
 
       <style>{`
         .swiper-button-next, .swiper-button-prev {
-          color: #4f46e5 !important;
+          color: #4338ca !important; /* Indigo-700 para garantir 100 em acessibilidade */
           transition: all 0.3s ease;
           opacity: 0;
         }
@@ -60,8 +62,13 @@ export function ProjectsSwiper({ images }: ProjectsSwiperProps) {
         .group:hover .swiper-button-prev {
           opacity: 1;
         }
+        .swiper-pagination-bullet {
+          background: #000 !important;
+          opacity: 0.3 !important;
+        }
         .swiper-pagination-bullet-active {
-          background: #4f46e5 !important;
+          background: #4338ca !important;
+          opacity: 1 !important;
         }
       `}</style>
     </div>
