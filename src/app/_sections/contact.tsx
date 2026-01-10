@@ -5,14 +5,22 @@ export function Contact() {
   const message: string = "Olá Daniel! Ví seu portfólio e gostaria de conversar."
 
   return (
-    <section id="contact" className="max-w-7xl mx-auto px-5 py-20">
-      <h2 className="text-4xl font-bold text-center mb-10 bg-linear-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
+    <section id="contact" className="max-w-7xl mx-auto px-5 py-20 overflow-hidden">
+      <h2 
+        className="text-4xl font-bold text-center mb-10 bg-linear-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text"
+        data-aos="fade-up"
+      >
         Contato
       </h2>
 
       <div className="grid md:grid-cols-2 gap-10">
 
-        <div className="flex flex-col gap-5">
+        <div 
+          className="flex flex-col gap-5"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          data-aos-duration="1000"
+        >
           <h3 className="text-2xl font-semibold">Vamos conversar?</h3>
           <p className="text-gray-600">
             Sinta-se à vontade para me chamar para projetos ou apenas para trocar uma ideia sobre dev!
@@ -27,8 +35,14 @@ export function Contact() {
           </a>
         </div>
 
-        <form action="https://api.web3forms.com/submit" method="POST" className="flex flex-col gap-4">
-
+        <form 
+          action="https://api.web3forms.com/submit" 
+          method="POST" 
+          className="flex flex-col gap-4"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          data-aos-duration="1000"
+        >
           <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
 
           <input 

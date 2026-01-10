@@ -3,8 +3,11 @@ import { ProjectsSwiper } from "../_components/projects-swiper";
 
 export function Projects() {
   return (
-    <section id="projects" className="w-full px-4 mx-auto py-16">
-      <h2 className="text-3xl font-bold text-center mb-16 sm:text-4xl">
+    <section id="projects" className="w-full px-4 mx-auto py-16 overflow-hidden">
+      <h2 
+        className="text-3xl font-bold text-center mb-16 sm:text-4xl"
+        data-aos="fade-up"
+      >
         Projetos
       </h2>
 
@@ -14,14 +17,22 @@ export function Projects() {
             key={project.id}
             className="grid grid-cols-2 gap-10 items-center not-lg:grid-cols-1"
           >
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100 border border-gray-200">
+            <div 
+              className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100 border border-gray-200"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
               <ProjectsSwiper 
                 images={project.images} 
                 isFirstProject={index === 0} 
               />
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div 
+              className="flex flex-col gap-4"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
               <h3 className="text-2xl font-bold text-gray-800 not-sm:text-center">
                 {project.title}
               </h3>
@@ -31,8 +42,14 @@ export function Projects() {
               </p>
 
               <ul className="flex flex-wrap gap-2 text-sm text-gray-500 select-none">
-                {project.techs.map((tech) => (
-                  <li key={tech} className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full font-medium">
+                {project.techs.map((tech, techIndex) => (
+                  <li 
+                    key={tech} 
+                    className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full font-medium"
+                    data-aos="zoom-in"
+                    data-aos-delay={techIndex * 50}
+                    data-aos-offset="0"
+                  >
                     {tech}
                   </li>
                 ))}
