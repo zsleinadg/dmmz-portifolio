@@ -9,8 +9,33 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://dmmz.vercel.app'),
   title: 'Daniel Marques - Desenvolvedor Front-End',
-  description: 'Protifólio de Daniel Marques',
+  description: 'Desenvolvedor Front-End focado em interfaces modernas, responsivas e acessíveis.',
+  keywords: ['Desenvolvedor', 'Front-End', 'React', 'Next.js', 'Portfolio'],
+  authors: [{ name: 'Daniel Marques' }],
+  openGraph: {
+    title: 'Daniel Marques - Desenvolvedor Front-End',
+    description: 'Confira meu portfólio e projetos desenvolvidos com as tecnologias mais modernas.',
+    url: "https://dmmz.vercel.app",
+    siteName: 'Daniel Marques - Portfolio',
+    images: [
+      {
+        url: '/assets/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Preview do Portfólio de Daniel Marques',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Daniel Marques - Desenvolvedor Front-End',
+    description: 'Portfolio de Daniel Marques',
+    images: ['/assets/opengraph-image.png'],
+  },
 }
 
 export default function RootLayout({
