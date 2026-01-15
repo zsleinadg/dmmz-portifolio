@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./header.module.css"
 import Link from "next/link"
 
@@ -13,6 +13,16 @@ const NAV_LINKS = [
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        }
+        else{
+            document.body.style.overflow = "auto"
+        }
+        return () => {document.body.style.overflow = "auto"}
+    }, [isOpen])
+
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault()
 
@@ -21,7 +31,7 @@ export function Header() {
             const topo = element.offsetTop
 
             window.scrollTo({
-                top: topo - 80,
+                top: topo,
                 behavior: "smooth"
             })
 

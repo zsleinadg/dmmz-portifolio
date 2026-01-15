@@ -18,6 +18,23 @@ export const leishopImages = [
   "/assets/Portifólio/LeiShop/Leishop5.png",
 ]
 
+export const englishtutorImages = [
+  "/assets/Portifólio/EnglishTutor/Englishtutor1.png",
+  "/assets/Portifólio/EnglishTutor/Englishtutor2.png",
+  "/assets/Portifólio/EnglishTutor/Englishtutor3.png",
+  "/assets/Portifólio/EnglishTutor/Englishtutor4.png",
+  "/assets/Portifólio/EnglishTutor/Englishtutor5.png",
+]
+
+export const dalygamesImages = [
+  "/assets/Portifólio/DalyGames/Dalygames1.png",
+  "/assets/Portifólio/DalyGames/Dalygames2.png",
+  "/assets/Portifólio/DalyGames/Dalygames3.png",
+  "/assets/Portifólio/DalyGames/Dalygames4.png",
+  "/assets/Portifólio/DalyGames/Dalygames5.png",
+  
+]
+
 export interface ProjectType {
   id: number;
   title: string;
@@ -47,5 +64,23 @@ export const projectsData: ProjectType[] = [
     images: leishopImages,
     linkProject: "https://lei-shop-green.vercel.app",
     linkRepo: "https://github.com/zsleinadg/LeiShop",
+  },
+  {
+    id: 3,
+    title: "English Tutor",
+    description: "Plataforma de ensino personalizada que utiliza a API da Groq (LPU) para oferecer tutoria de inglês em tempo real com baixíssima latência. O sistema atua como um professor particular, fornecendo correções gramaticais instantâneas (correction), explicações contextuais (explanation) e sugestões de reescrita (better way). Inclui um motor de avaliação que gera um score de proficiência detalhado, analisando pontos fortes e áreas de melhoria a cada requisição, garantindo um ciclo de aprendizado contínuo e interativo.",
+    techs: ["NextJS", "React", "TypeScript", "AI", "Groq", "Tailwind CSS"],
+    images: englishtutorImages,
+    linkProject: "https://english-tutor-theta.vercel.app",
+    linkRepo: "https://github.com/zsleinadg/English-tutor",
+  },
+  {
+    id: 4,
+    title: "DalyGames",
+    description: "Portal dinâmico de entretenimento que utiliza consumo de APIs externas para centralizar um vasto catálogo de jogos. Implementa um algoritmo de seleção aleatória automatizada para a 'Recomendação do Dia', promovendo a descoberta de novos títulos a cada acesso. O projeto foca em Server-Side Rendering (SSR) com Next.js para otimização de performance e SEO, entregando páginas de detalhes ricas em metadados e mídia.",
+    techs: ["NextJS", "React", "TypeScript", "Tailwind CSS"],
+    images: dalygamesImages,
+    linkProject: "https://daly-games-smoky.vercel.app",
+    linkRepo: "https://github.com/zsleinadg/DalyGames",
   },
 ];
