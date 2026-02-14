@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import profile from '../../../public/assets/profilepicquality.png'
+import profile from '@/../public/assets/profilepicquality.png'
 import { SiGithub, SiLinkedin } from 'react-icons/si'
 import { IoDocumentText } from 'react-icons/io5'
 

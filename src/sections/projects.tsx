@@ -1,5 +1,5 @@
 import { projectsData } from "@/data/projects";
-import { ProjectsSwiper } from "../_components/projects-swiper";
+import { ProjectsSwiper } from "../components/projects-swiper";
 
 export function Projects() {
   return (

@@ -32,7 +32,7 @@ export function About() {
                         <span className="h-px w-8 bg-gray-300"></span>
                     </h2>
 
-                    <div className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5">
+                    <div className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5 ">
                         {techs.map((tech, index) => {
                             const Icon = tech.icon;
                             return (

@@ -1,10 +1,10 @@
-import { About } from "./_sections/about"
-import Container from "./_components/container"
-import { Header } from "./_components/header"
-import { Hero } from "./_sections/hero"
-import { Projects } from "./_sections/projects"
-import { Contact } from "./_sections/contact"
-import { Footer } from "./_components/footer"
+import { About } from "../sections/about"
+import Container from "../components/container"
+import { Header } from "../components/header"
+import { Hero } from "../sections/hero"
+import { Projects } from "../sections/projects"
+import { Contact } from "../sections/contact"
+import { Footer } from "../components/footer"
 
 export default function Home() {
   return (

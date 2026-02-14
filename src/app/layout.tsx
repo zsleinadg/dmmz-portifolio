@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import { AosInit } from './_components/aos-init'
+import { AosInit } from '../components/aos-init'
 
 const poppins = Poppins({
   subsets: ['latin'],
