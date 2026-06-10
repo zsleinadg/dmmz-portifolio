@@ -1,5 +1,20 @@
 import { ProjectType } from "@/types"
 
+export const leivicesImages = [
+  "/assets/projects/leivices/img1.png",
+  "/assets/projects/leivices/img2.png",
+  "/assets/projects/leivices/img3.png",
+  "/assets/projects/leivices/img4.png",
+  "/assets/projects/leivices/img5.png",
+  "/assets/projects/leivices/img6.png",
+  "/assets/projects/leivices/img7.png",
+  "/assets/projects/leivices/img8.png",
+  "/assets/projects/leivices/img9.png",
+  "/assets/projects/leivices/img10.png",
+  "/assets/projects/leivices/img11.png",
+  "/assets/projects/leivices/img12.jpg",
+]
+
 export const testepizzaria = [
   "/assets/projects/testepizzaria/img1.png",
   "/assets/projects/testepizzaria/img2.png",
@@ -49,6 +64,15 @@ export const dalygamesImages = [
 export const projectsData: ProjectType[] = [
   {
     id: 1,
+    title: "Leivices - Agendamentos Online e Gerenciamento de Salões",
+    description: "SaaS multi-inquilino completo para salões de beleza, barbearias e clínicas de estética, desenvolvido com arquitetura moderna e escalável. O sistema oferece agendamento inteligente com bloqueio automático de conflitos, gestão de equipe com atribuição de serviços e comissões por profissional, além de um painel analítico avançado com gráficos interativos (Recharts) e métricas detalhadas de desempenho. Implementa autenticação segura via NextAuth com controle de acesso baseado em perfis (OWNER/CLIENT), assinaturas recorrentes gerenciadas pelo Stripe com planos progressivos, upload otimizado de mídias com Cloudinary, notificações transacionais via Resend e geração de recibos em PDF. Tudo sustentado por uma stack robusta com TanStack React Query para sincronização de estado servidor e formulários validados com Zod + React Hook Form.",
+    techs: ["NextJS", "TypeScript", "PostgreSQL", "PrismaORM", "Stripe", "TailwindCSS", "NextAuth", "React Hook Form", "TanStack React Query", "Recharts"],
+    images: leivicesImages,
+    linkProject: "https://leivices.com.br",
+    linkRepo: "#",
+  },
+  {
+    id: 2,
     title: "TestePizzaria",
     description: "Ecossistema full-stack completo para gestão de pizzarias, composto por três frentes integradas: Backend, Web e Mobile. O sistema utiliza PostgreSQL e PrismaORM para persistência de dados e implementa um controle de acesso robusto (RBAC) com roles para ADMIN e STAFF. O painel Web permite o gerenciamento de produtos, categorias e fluxo de caixa, enquanto o aplicativo Mobile, desenvolvido especificamente para garçons via Expo, otimiza a criação de pedidos e a comunicação direta com a cozinha.",
     techs: ["NextJS", "React", "TypeScript", "Tailwind CSS", "React Native", "Expo", "PostgreSQL", "PrismaORM"],
@@ -57,7 +81,7 @@ export const projectsData: ProjectType[] = [
     linkRepo: "https://github.com/zsleinadg?tab=repositories",
   },
   {
-    id: 2,
+    id: 3,
     title: "WebCarros",
     description: "Plataforma SaaS de marketplace automotivo com sistema completo de anúncios. O projeto gerencia fluxos complexos como autenticação de usuários, persistência de dados em tempo real e storage para múltiplos arquivos. Implementa validações rigorosas de formulários e integração dinâmica com WhatsApp para conversão de leads.",
     techs: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Zod", "Hook Form"],
@@ -66,7 +90,7 @@ export const projectsData: ProjectType[] = [
     linkRepo: "https://github.com/zsleinadg/WebCarros",
   },
   {
-    id: 3,
+    id: 4,
     title: "LeiShop",
     description: "E-commerce dinâmico, que consome dados de uma API externa para listagem de produtos, focado em gerenciamento de estado e experiência do usuário. Implementa a lógica de carrinho de compras através da Context API, permitindo a manipulação de itens em tempo real, cálculo automático de totais e persistência de dados durante a sessão do usuário. O projeto destaca o domínio de Hooks e a navegação fluida entre rotas.",
     techs: ["React", "TypeScript", "Tailwind CSS", "Context API"],
@@ -75,7 +99,7 @@ export const projectsData: ProjectType[] = [
     linkRepo: "https://github.com/zsleinadg/LeiShop",
   },
   {
-    id: 4,
+    id: 5,
     title: "English Tutor",
     description: "Plataforma de ensino personalizada que utiliza a API da Groq (LPU) para oferecer tutoria de inglês em tempo real com baixíssima latência. O sistema atua como um professor particular, fornecendo correções gramaticais instantâneas (correction), explicações contextuais (explanation) e sugestões de reescrita (better way). Inclui um motor de avaliação que gera um score de proficiência detalhado, analisando pontos fortes e áreas de melhoria a cada requisição, garantindo um ciclo de aprendizado contínuo e interativo.",
     techs: ["NextJS", "React", "TypeScript", "AI", "Groq", "Tailwind CSS"],
@@ -84,7 +108,7 @@ export const projectsData: ProjectType[] = [
     linkRepo: "https://github.com/zsleinadg/English-tutor",
   },
   {
-    id: 5,
+    id: 6,
     title: "DalyGames",
     description: "Portal dinâmico de entretenimento que utiliza consumo de APIs externas para centralizar um vasto catálogo de jogos. Implementa um algoritmo de seleção aleatória automatizada para a 'Recomendação do Dia', promovendo a descoberta de novos títulos a cada acesso. O projeto foca em Server-Side Rendering (SSR) com Next.js para otimização de performance e SEO, entregando páginas de detalhes ricas em metadados e mídia.",
     techs: ["NextJS", "React", "TypeScript", "Tailwind CSS"],
