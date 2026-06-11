@@ -1,7 +1,16 @@
+"use client"
+
+import { useState } from "react";
 import { projectsData } from "@/data/projects";
 import { ProjectsSwiper } from "../components/projects-swiper";
+import { ProjectLightbox } from "../components/project-lightbox";
 
 export function Projects() {
+  const [lightbox, setLightbox] = useState<{
+    images: string[];
+    imageIndex: number;
+  } | null>(null);
+
   return (
     <section id="projects" className="w-full px-4 mx-auto py-16 overflow-hidden">
       <h2 
@@ -25,6 +34,7 @@ export function Projects() {
               <ProjectsSwiper 
                 images={project.images} 
                 isFirstProject={index === 0} 
+                onImageClick={(imageIndex) => setLightbox({ images: project.images, imageIndex })}
               />
             </div>
 
@@ -76,6 +86,13 @@ export function Projects() {
           </div>
         ))}
       </div>
+
+      <ProjectLightbox
+        images={lightbox?.images ?? []}
+        initialIndex={lightbox?.imageIndex ?? 0}
+        isOpen={lightbox !== null}
+        onClose={() => setLightbox(null)}
+      />
     </section>
   );
 }
