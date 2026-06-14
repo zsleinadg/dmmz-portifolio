@@ -10,13 +10,13 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dmmz.vercel.app'),
-  title: 'Daniel Marques - Desenvolvedor Front-End',
-  description: 'Desenvolvedor Front-End focado em interfaces modernas, responsivas e acessíveis.',
-  keywords: ['Desenvolvedor', 'Front-End', 'React', 'Next.js', 'Portfolio'],
+  title: 'Daniel Marques - Desenvolvedor Full-Stack',
+  description: 'Desenvolvedor Full-Stack focado em soluções completas, do front-end ao back-end.',
+  keywords: ['Desenvolvedor', 'Full-Stack', 'React', 'Next.js', 'Node.js', 'TypeScript', 'Portfolio'],
   authors: [{ name: 'Daniel Marques' }],
   openGraph: {
-    title: 'Daniel Marques - Desenvolvedor Front-End',
-    description: 'Confira meu portfólio e projetos desenvolvidos com as tecnologias mais modernas.',
+    title: 'Daniel Marques - Desenvolvedor Full-Stack',
+    description: 'Confira meu portfólio e projetos full-stack desenvolvidos com as tecnologias mais modernas.',
     url: "https://dmmz.vercel.app",
     siteName: 'Daniel Marques - Portfolio',
     images: [
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daniel Marques - Desenvolvedor Front-End',
-    description: 'Portfolio de Daniel Marques',
+    title: 'Daniel Marques - Desenvolvedor Full-Stack',
+    description: 'Portfolio de Daniel Marques - Desenvolvedor Full-Stack',
     images: ['/assets/opengraph-image.png'],
   },
 }

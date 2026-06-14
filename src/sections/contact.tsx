@@ -1,8 +1,42 @@
+"use client"
+
+import { useState, FormEvent } from "react";
 import { SiWhatsapp } from "react-icons/si";
 
 export function Contact() {
   const mynumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const message: string = "Olá Daniel! Ví seu portfólio e gostaria de conversar."
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [formMessage, setFormMessage] = useState("")
+  const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null)
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+        name,
+        email,
+        message: formMessage,
+      }),
+    })
+
+    if (res.ok) {
+      setName("")
+      setEmail("")
+      setFormMessage("")
+      setToast({ type: "success", text: "Mensagem enviada com sucesso!" })
+    } else {
+      setToast({ type: "error", text: "Erro ao enviar. Tente novamente." })
+    }
+
+    setTimeout(() => setToast(null), 4000)
+  }
 
   return (
     <section id="contact" className="max-w-7xl mx-auto px-5 py-20 overflow-hidden">
@@ -36,21 +70,20 @@ export function Contact() {
         </div>
 
         <form
-          action="https://api.web3forms.com/submit"
-          method="POST"
+          onSubmit={handleSubmit}
           className="flex flex-col gap-4"
           data-aos="fade-up"
           data-aos-delay="400"
           data-aos-duration="1000"
         >
-          <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
-
           <input
             type="text"
             name="name"
             placeholder="Seu Nome"
             required
             autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="border p-3 rounded-lg focus:outline-indigo-600"
           />
           <input
@@ -59,6 +92,8 @@ export function Contact() {
             placeholder="Seu E-mail"
             required
             autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="border p-3 rounded-lg focus:outline-indigo-600"
           />
           <textarea
@@ -66,6 +101,8 @@ export function Contact() {
             placeholder="Sua Mensagem"
             rows={4}
             required
+            value={formMessage}
+            onChange={(e) => setFormMessage(e.target.value)}
             className="border p-3 rounded-lg focus:outline-indigo-600"
           ></textarea>
 
@@ -75,6 +112,17 @@ export function Contact() {
           >
             Enviar E-mail
           </button>
+
+          {toast && (
+            <div
+              className={`text-sm text-white font-bold text-center py-2 px-4 rounded-lg transition-all ${
+                toast.type === "success" ? "bg-green-600" : "bg-red-600"
+              }`}
+              data-aos="fade-up"
+            >
+              {toast.text}
+            </div>
+          )}
         </form>
       </div>
     </section>

@@ -19,14 +19,15 @@ export function Hero() {
         <h2 className=" text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800">
           Desenvolvedor <br />
           <span className="bg-linear-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text">
-            Front End
+            Full-Stack
           </span>
         </h2>
 
         <p className="lg:text-lg max-w-4xl">
           Olá, me chamo <strong>Daniel Marques</strong>. Sou um desenvolvedor
-          focado em evolução constante e excelência técnica.
-          Proporciono aplicações de qualidade e com as tecnologias mais modernas.
+          Full-Stack focado em evolução constante e excelência técnica.
+          Proporciono aplicações completas, do banco de dados à interface,
+          utilizando as tecnologias mais modernas do mercado.
           Busco obstáculos e desafíos para aprimorar minha habilidade de resolução de problemas.
         </p>
 

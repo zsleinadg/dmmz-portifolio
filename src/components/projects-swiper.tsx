@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { HiArrowsExpand } from "react-icons/hi";
 
 import "swiper/css";
@@ -28,12 +28,11 @@ export function ProjectsSwiper({ images, isFirstProject, onImageClick }: Project
   return (
     <div className="relative w-full h-full group">
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Pagination]}
         spaceBetween={0}
         slidesPerView={1}
         navigation={true}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={false}
         className="w-full h-full rounded-lg"
       >

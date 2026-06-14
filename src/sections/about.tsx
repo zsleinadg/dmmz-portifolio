@@ -15,8 +15,8 @@ export function About() {
                         Sobre mim
                     </h1>
                     <p className="text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl max-w-2xl mx-auto">
-                        Sou um desenvolvedor Front-End focado em criar interfaces modernas,
-                        responsivas e acessíveis, utilizando tecnologias atuais e boas práticas
+                        Sou um desenvolvedor Full-Stack focado em criar soluções completas,
+                        do design ao deploy, utilizando tecnologias atuais e boas práticas
                         de desenvolvimento.
                     </p>
                 </div>
@@ -32,24 +32,38 @@ export function About() {
                         <span className="h-px w-8 bg-gray-300"></span>
                     </h2>
 
-                    <div className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5 ">
-                        {techs.map((tech, index) => {
-                            const Icon = tech.icon;
-                            return (
-                                <div 
-                                    key={tech.name} 
-                                    className="flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110"
-                                    data-aos="zoom-in"
-                                    data-aos-delay={index * 50}
+                    {(["Front-end", "Back-end", "Database", "Ferramentas"] as const).map((category, catIndex) => {
+                        const filtered = techs.filter(t => t.category === category);
+                        return (
+                            <div key={category} className="mb-8 last:mb-0">
+                                <h3 
+                                    className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4"
+                                    data-aos="fade-up"
+                                    data-aos-delay={catIndex * 100}
                                 >
-                                    <div className={`text-4xl ${tech.color}`}>
-                                        <Icon /> 
-                                    </div>
-                                    <span className="text-sm font-medium text-gray-600">{tech.name}</span>
+                                    {category}
+                                </h3>
+                                <div className="grid grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+                                    {filtered.map((tech, index) => {
+                                        const Icon = tech.icon;
+                                        return (
+                                            <div 
+                                                key={tech.name} 
+                                                className="flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110"
+                                                data-aos="zoom-in"
+                                                data-aos-delay={index * 50}
+                                            >
+                                                <div className={`text-4xl ${tech.color}`}>
+                                                    <Icon /> 
+                                                </div>
+                                                <span className="text-sm font-medium text-gray-600">{tech.name}</span>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                            )
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
 
                 <div className="w-full pt-10 border-t border-gray-200">
