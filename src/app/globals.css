@@ -17,7 +17,7 @@ section[id] {
 .swiper-button-prev {
   color: #4f46e5 !important;
   transition: all 0.3s ease;
-  opacity: 0;
+  opacity: 0.4;
 }
 .projects-swiper:hover .swiper-button-next,
 .projects-swiper:hover .swiper-button-prev {
