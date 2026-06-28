@@ -115,6 +115,7 @@ export function Projects() {
       </div>
 
       <ProjectLightbox
+        key={lightbox?.images[0] ?? 'closed'}
         images={lightbox?.images ?? []}
         initialIndex={lightbox?.imageIndex ?? 0}
         isOpen={lightbox !== null}

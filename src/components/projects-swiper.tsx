@@ -26,7 +26,7 @@ export function ProjectsSwiper({ images, isFirstProject, onImageClick }: Project
   if (!isMounted) return <div className="w-full aspect-video bg-gray-100 animate-pulse rounded-lg" />;
 
   return (
-    <div className="relative w-full h-full group">
+    <div className="relative w-full h-full projects-swiper">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={0}
@@ -34,7 +34,7 @@ export function ProjectsSwiper({ images, isFirstProject, onImageClick }: Project
         navigation={true}
         pagination={{ clickable: true }}
         loop={false}
-        className="w-full h-full rounded-lg"
+        className="!overflow-hidden w-full h-full rounded-lg"
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
@@ -46,7 +46,7 @@ export function ProjectsSwiper({ images, isFirstProject, onImageClick }: Project
                 src={src}
                 alt={`Slide ${index + 1}`}
                 fill
-                className="object-contain transition-transform duration-300 group-hover/slide:scale-105" 
+                className="object-contain transition-transform duration-300 group-hover/slide:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
                 priority={isFirstProject && index === 0}
                 loading={isFirstProject && index === 0 ? "eager" : "lazy"}
@@ -59,26 +59,6 @@ export function ProjectsSwiper({ images, isFirstProject, onImageClick }: Project
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <style>{`
-        .swiper-button-next, .swiper-button-prev {
-          color: #4338ca !important; /* Indigo-700 para garantir 100 em acessibilidade */
-          transition: all 0.3s ease;
-          opacity: 0;
-        }
-        .group:hover .swiper-button-next, 
-        .group:hover .swiper-button-prev {
-          opacity: 1;
-        }
-        .swiper-pagination-bullet {
-          background: #000 !important;
-          opacity: 0.3 !important;
-        }
-        .swiper-pagination-bullet-active {
-          background: #4338ca !important;
-          opacity: 1 !important;
-        }
-      `}</style>
     </div>
   );
 }
