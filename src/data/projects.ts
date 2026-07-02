@@ -16,14 +16,18 @@ export const leivicesImages = [
 ]
 
 export const pizzaflowImages = [
-  "/assets/projects/pizzaflow/img1.png",
-  "/assets/projects/pizzaflow/img2.png",
-  "/assets/projects/pizzaflow/img3.png",
-  "/assets/projects/pizzaflow/img4.png",
-  "/assets/projects/pizzaflow/img5.png",
-  "/assets/projects/pizzaflow/img6.png",
-  "/assets/projects/pizzaflow/img7.png",
-  "/assets/projects/pizzaflow/img8.png",
+  "/assets/projects/pizzaflow/img1.webp",
+  "/assets/projects/pizzaflow/img2.webp",
+  "/assets/projects/pizzaflow/img3.webp",
+  "/assets/projects/pizzaflow/img4.webp",
+  "/assets/projects/pizzaflow/img5.webp",
+  "/assets/projects/pizzaflow/img6.webp",
+  "/assets/projects/pizzaflow/img7.webp",
+  "/assets/projects/pizzaflow/img8.webp",
+  "/assets/projects/pizzaflow/img9.webp",
+  "/assets/projects/pizzaflow/img10.webp",
+  "/assets/projects/pizzaflow/img11.webp",
+  "/assets/projects/pizzaflow/img12.webp",
 ]
 
 export const webcarrosImages = [
@@ -116,16 +120,5 @@ export const projectsData: ProjectType[] = [
     linkProject: "https://daly-games-smoky.vercel.app",
     linkRepo: "https://github.com/zsleinadg/DalyGames",
     badges: ["Front-End", "Entretenimento"],
-  },
-  {
-    id: 6,
-    title: "English Tutor",
-    shortDescription: "Plataforma com IA (Groq LPU) para tutoria de inglês em tempo real.",
-    description: "Plataforma de ensino personalizada que utiliza a API da Groq (LPU) para oferecer tutoria de inglês em tempo real com baixíssima latência. O sistema atua como um professor particular, fornecendo correções gramaticais instantâneas (correction), explicações contextuais (explanation) e sugestões de reescrita (better way). Inclui um motor de avaliação que gera um score de proficiência detalhado, analisando pontos fortes e áreas de melhoria a cada requisição, garantindo um ciclo de aprendizado contínuo e interativo.",
-    techs: ["NextJS", "React", "TypeScript", "AI", "Groq", "Tailwind CSS"],
-    images: englishtutorImages,
-    linkProject: "https://english-tutor-theta.vercel.app",
-    linkRepo: "https://github.com/zsleinadg/English-tutor",
-    badges: ["Full-Stack", "IA"],
   },
 ];

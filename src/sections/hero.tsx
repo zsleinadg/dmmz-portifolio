@@ -9,10 +9,12 @@ export function Hero() {
       <Image
         src={profile}
         alt="Foto de perfil"
-        className=" select-none rounded-full w-64 h-64 lg:w-87.5 lg:h-87.5 object-cover"
+        className="select-none rounded-full size-64 lg:size-87.5 object-cover"
         width={350}
         height={350}
         priority
+        placeholder="blur"
+        sizes="(max-width: 1024px) 256px, 350px"
       />
 
       <div className="flex flex-col gap-6 text-center lg:text-left">
