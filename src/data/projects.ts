@@ -65,6 +65,17 @@ export const dalygamesImages = [
   "/assets/projects/dalygames/img5.png",
 ]
 
+export const lakevillagelpImages = [
+  "/assets/projects/lakevillagelp/img1.webp",
+  "/assets/projects/lakevillagelp/img2.webp",
+  "/assets/projects/lakevillagelp/img3.webp",
+  "/assets/projects/lakevillagelp/img4.webp",
+  "/assets/projects/lakevillagelp/img5.webp",
+  "/assets/projects/lakevillagelp/img6.webp",
+  "/assets/projects/lakevillagelp/img7.webp",
+  "/assets/projects/lakevillagelp/img8.webp",
+]
+
 export const projectsData: ProjectType[] = [
   {
     id: 1,
@@ -90,6 +101,17 @@ export const projectsData: ProjectType[] = [
   },
   {
     id: 3,
+    title: "LakeVillage LP",
+    shortDescription: "Landing page moderna para condomínio residencial com lago privativo, explorando variações de design e layout.",
+    description: "Landing page institucional para o condomínio Lake Village, desenvolvida como estudo de design e prototipação. O projeto foi concebido no Figma com auxílio de ferramentas de IA para refinar paleta de cores, tipografia e composição visual, resultando em uma interface sofisticada e alinhada ao mercado imobiliário. Foram exploradas múltiplas variações de componentes (como headers e hero sections) para avaliar diferentes abordagens visuais. Desenvolvida com React e Tailwind CSS, entregando uma experiência responsiva e de alta fidelidade ao design proposto.",
+    techs: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    images: lakevillagelpImages,
+    linkProject: "https://lake-village-lp.vercel.app",
+    linkRepo: "https://github.com/zsleinadg/lake-village-lp",
+    badges: ["Front-End", "Landing Page"],
+  },
+  {
+    id: 4,
     title: "WebCarros",
     shortDescription: "Marketplace automotivo com autenticação Supabase e integração WhatsApp.",
     description: "Plataforma SaaS de marketplace automotivo com sistema completo de anúncios. O projeto gerencia fluxos complexos como autenticação de usuários, persistência de dados em tempo real e storage para múltiplos arquivos. Implementa validações rigorosas de formulários e integração dinâmica com WhatsApp para conversão de leads.",
@@ -100,7 +122,7 @@ export const projectsData: ProjectType[] = [
     badges: ["Full-Stack", "SaaS"],
   },
   {
-    id: 4,
+    id: 5,
     title: "LeiShop",
     shortDescription: "E-commerce dinâmico com carrinho Context API e consumo de API externa.",
     description: "E-commerce dinâmico, que consome dados de uma API externa para listagem de produtos, focado em gerenciamento de estado e experiência do usuário. Implementa a lógica de carrinho de compras através da Context API, permitindo a manipulação de itens em tempo real, cálculo automático de totais e persistência de dados durante a sessão do usuário. O projeto destaca o domínio de Hooks e a navegação fluida entre rotas.",
@@ -111,7 +133,7 @@ export const projectsData: ProjectType[] = [
     badges: ["Front-End", "E-commerce"],
   },
   {
-    id: 5,
+    id: 6,
     title: "DalyGames",
     shortDescription: "Catálogo de jogos com SSR, SEO e recomendação diária automatizada.",
     description: "Portal dinâmico de entretenimento que utiliza consumo de APIs externas para centralizar um vasto catálogo de jogos. Implementa um algoritmo de seleção aleatória automatizada para a 'Recomendação do Dia', promovendo a descoberta de novos títulos a cada acesso. O projeto foca em Server-Side Rendering (SSR) com Next.js para otimização de performance e SEO, entregando páginas de detalhes ricas em metadados e mídia.",
