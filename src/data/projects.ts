@@ -31,14 +31,18 @@ export const pizzaflowImages = [
 ]
 
 export const webcarrosImages = [
-  "/assets/projects/webcarros/img1.png",
-  "/assets/projects/webcarros/img2.png",
-  "/assets/projects/webcarros/img3.png",
-  "/assets/projects/webcarros/img4.png",
-  "/assets/projects/webcarros/img5.png",
-  "/assets/projects/webcarros/img6.png",
-  "/assets/projects/webcarros/img7.png",
-  "/assets/projects/webcarros/img8.png",
+  "/assets/projects/webcarros/img1.webp",
+  "/assets/projects/webcarros/img2.webp",
+  "/assets/projects/webcarros/img3.webp",
+  "/assets/projects/webcarros/img4.webp",
+  "/assets/projects/webcarros/img5.webp",
+  "/assets/projects/webcarros/img6.webp",
+  "/assets/projects/webcarros/img7.webp",
+  "/assets/projects/webcarros/img8.webp",
+  "/assets/projects/webcarros/img9.webp",
+  "/assets/projects/webcarros/img10.webp",
+  "/assets/projects/webcarros/img11.webp",
+  "/assets/projects/webcarros/img12.webp",
 ]
 
 export const leishopImages = [
@@ -114,8 +118,8 @@ export const projectsData: ProjectType[] = [
     id: 4,
     title: "WebCarros",
     shortDescription: "Marketplace automotivo com autenticação Supabase e integração WhatsApp.",
-    description: "Plataforma SaaS de marketplace automotivo com sistema completo de anúncios. O projeto gerencia fluxos complexos como autenticação de usuários, persistência de dados em tempo real e storage para múltiplos arquivos. Implementa validações rigorosas de formulários e integração dinâmica com WhatsApp para conversão de leads.",
-    techs: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Zod", "Hook Form"],
+    description: "Marketplace automotivo completo construído com React e TypeScript. O sistema conta com autenticação via Supabase, dashboard do vendedor para gerenciar anúncios com upload de múltiplas imagens, validação de formulários com Zod e React Hook Form, e integração dinâmica com WhatsApp para conversão de leads. O projeto inclui páginas públicas (Home com vitrine interativa, catálogo com filtros avançados, detalhes do veículo, test-drive e venda) e área logada com dashboard completo para gestão de anúncios e favoritos persistentes. Tudo construído com React Router, Radix UI e PostgreSQL em tempo real.",
+    techs: ["React", "TypeScript", "Vite", "Supabase", "Tailwind CSS", "Zod", "React Hook Form", "Radix UI", "React Router"],
     images: webcarrosImages,
     linkProject: "https://web-carros-phi.vercel.app",
     linkRepo: "https://github.com/zsleinadg/WebCarros",
