@@ -1,11 +1,18 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import { AosInit } from '../components/aos-init'
+import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Toaster } from 'sonner'
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
 })
 
 export const metadata: Metadata = {
@@ -44,10 +51,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body className={poppins.className}>
+    <html lang="pt-br" className="dark">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
-        <AosInit />
+        <Toaster
+          theme="dark"
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: '#11131A',
+              border: '1px solid #242733',
+              color: '#F5F5F7',
+            },
+          }}
+        />
       </body>
     </html>
   )
