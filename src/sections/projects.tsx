@@ -8,7 +8,7 @@ export function Projects() {
   const [lightbox, setLightbox] = useState<{ projectIndex: number; imageIndex: number } | null>(null);
 
   return (
-    <section id="projects" className="bg-background py-24 border-t border-border">
+    <section id="projects" className="bg-background py-24">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
           <div className="flex items-end justify-between flex-wrap gap-4">
@@ -82,7 +82,7 @@ function ProjectCard({
           <img
             src={project.images[0]}
             alt={project.title}
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            className="w-full h-full object-cover duration-300"
           />
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
@@ -90,24 +90,6 @@ function ProjectCard({
             Ver imagens
           </div>
         </div>
-
-        {(project.badges ?? []).length > 0 && (
-          <div className="absolute top-3 left-3 flex gap-1.5">
-            {project.badges!.map((badge) => (
-              <span
-                key={badge}
-                className="font-mono text-[10px] font-semibold px-2 py-0.5 rounded"
-                style={{
-                  color: "rgba(255,255,255,0.50)",
-                  backgroundColor: "rgba(124,58,237,0.10)",
-                  border: "1px solid rgba(124,58,237,0.15)",
-                }}
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="p-5 flex flex-col gap-3 flex-1">
@@ -118,6 +100,19 @@ function ProjectCard({
         <p className="text-base text-muted-foreground leading-relaxed flex-1">
           {project.shortDescription}
         </p>
+
+        {(project.badges ?? []).length > 0 && (
+          <div className="flex gap-1.5 flex-wrap">
+            {project.badges!.map((badge) => (
+              <span
+                key={badge}
+                className="font-mono text-[10px] font-semibold text-accent bg-accent/10 border border-accent/15 rounded px-2 py-0.5"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="flex gap-1.5 flex-wrap">
           {project.techs.slice(0, 6).map((tag) => (
