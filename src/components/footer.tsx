@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { SiGithub, SiInstagram } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa6";
@@ -14,9 +16,12 @@ export function Footer() {
   return (
     <footer className="w-full border-t border-border pb-6 pt-6">
       <div className="max-w-310 mx-auto px-5 flex flex-col items-center min-[395px]:flex-row min-[395px]:justify-between gap-5 text-muted-foreground text-sm">
-        <h1 className="text-xl font-bold bg-linear-to-b px-2 italic from-indigo-600 to-purple-900 text-transparent bg-clip-text select-none">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-poppins text-xl font-bold bg-linear-to-b px-2 italic from-indigo-600 to-purple-900 text-transparent bg-clip-text select-none border-none cursor-pointer"
+        >
           DM
-        </h1>
+        </button>
 
         <p className="text-center">© {currentYear} • Daniel Marques</p>
 

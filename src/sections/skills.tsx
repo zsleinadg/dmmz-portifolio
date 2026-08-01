@@ -44,7 +44,7 @@ export function Skills() {
             const categoryLabel = cat === "Frontend" ? "Front-end" : cat === "Backend" ? "Back-end" : cat;
             return (
               <div key={cat}>
-                <h3 className="text-sm flex items-center justify-center font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                <h3 className="font-poppins text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4 text-center">
                   {categoryLabel}
                 </h3>
                 <div className="grid grid-cols-3 gap-x-4 gap-y-5">

@@ -43,7 +43,7 @@ export function Navbar() {
       <div className="max-w-310 mx-auto px-10 h-full flex items-center justify-between max-md:px-5">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-4xl font-bold italic bg-linear-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text border-none cursor-pointer select-none pr-1"
+          className="font-poppins text-4xl font-bold italic bg-linear-to-b from-indigo-600 to-purple-900 text-transparent bg-clip-text border-none cursor-pointer select-none pr-1"
         >
           DM
         </button>
