@@ -5,14 +5,19 @@ export function Education() {
     <section id="education" className="bg-background py-24">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
-          <h2 className="text-[clamp(28px,4vw,38px)] not-md:text-center font-bold text-foreground tracking-tight leading-tight">
+          <h2
+            className="text-[clamp(28px,4vw,38px)] not-md:text-center font-bold text-foreground tracking-tight leading-tight"
+            data-aos="fade-up"
+          >
             Formação e Cursos
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {courses.map((course, index) => (
-            <CourseCard key={index} course={course} />
+            <div key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <CourseCard course={course} />
+            </div>
           ))}
         </div>
       </div>
@@ -22,7 +27,7 @@ export function Education() {
 
 function CourseCard({ course }: { course: typeof courses[0] }) {
   return (
-    <div className="p-5 rounded-2xl bg-card border border-border shadow-sm hover:shadow-md hover:border-accent/30 transition-all group">
+    <div className="h-full p-5 rounded-2xl bg-card border border-border shadow-sm hover:shadow-md hover:border-accent/30 transition-all group">
       <div className="flex justify-between items-start gap-3 mb-2">
         <h3 className="font-bold text-foreground group-hover:text-indigo-600 transition-colors">
           {course.title}

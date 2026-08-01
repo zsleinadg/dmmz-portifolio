@@ -17,7 +17,7 @@ export function Skills() {
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
           <div className="flex items-end justify-between not-md:justify-center flex-wrap gap-6">
-            <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-foreground tracking-tight leading-tight">
+            <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-foreground tracking-tight leading-tight" data-aos="fade-up">
               Habilidades Técnicas
             </h2>
             <div className="hidden sm:flex gap-1.5 flex-wrap">
@@ -40,16 +40,25 @@ export function Skills() {
         </div>
 
         <div className="flex flex-col gap-6 sm:hidden">
-          {(["Frontend", "Backend", "Database", "Ferramentas"] as const).map((cat) => {
+          {(["Frontend", "Backend", "Database", "Ferramentas"] as const).map((cat, catIndex) => {
             const categoryLabel = cat === "Frontend" ? "Front-end" : cat === "Backend" ? "Back-end" : cat;
             return (
               <div key={cat}>
-                <h3 className="font-poppins text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4 text-center">
+                <h3
+                  className="font-poppins text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4 text-center"
+                  data-aos="fade-up"
+                  data-aos-delay={catIndex * 100}
+                >
                   {categoryLabel}
                 </h3>
                 <div className="grid grid-cols-3 gap-x-4 gap-y-5">
-                  {techs.filter((t) => t.category === cat).map((skill) => (
-                    <div key={skill.name} className="flex flex-col items-center gap-2">
+                  {techs.filter((t) => t.category === cat).map((skill, skillIndex) => (
+                    <div
+                      key={skill.name}
+                      className="flex flex-col items-center gap-2"
+                      data-aos="zoom-in"
+                      data-aos-delay={skillIndex * 50}
+                    >
                       <skill.icon size={30} style={{ color: skill.color }} />
                       <span className="text-xs font-medium text-muted-foreground text-center">
                         {skill.name}
@@ -64,8 +73,10 @@ export function Skills() {
 
         <div className="hidden sm:block">
           <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3">
-            {filtered.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+            {filtered.map((skill, index) => (
+              <div key={skill.name} data-aos="zoom-in" data-aos-delay={index * 50}>
+                <SkillCard skill={skill} />
+              </div>
             ))}
           </div>
         </div>

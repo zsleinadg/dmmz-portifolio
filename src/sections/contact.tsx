@@ -43,7 +43,7 @@ export function Contact() {
   return (
     <section id="contact" className="bg-background py-24">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
-        <div className="mb-14 text-center">
+        <div className="mb-14 text-center" data-aos="fade-up">
           <h2 className="text-[clamp(28px,4vw,42px)] font-bold text-foreground tracking-tight leading-tight mb-4">
             Vamos conversar?
           </h2>
@@ -53,7 +53,12 @@ export function Contact() {
         </div>
 
         <div className="grid grid-cols-[1fr_1.6fr] gap-8 items-start max-md:grid-cols-1">
-          <div className="flex flex-col gap-4 bg-card border border-border rounded-2xl p-8">
+          <div
+            className="flex flex-col gap-4 bg-card border border-border rounded-2xl p-8"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+          >
             <a
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
               target="_blank"
@@ -98,7 +103,12 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="bg-card border border-border rounded-2xl p-8">
+          <div
+            className="bg-card border border-border rounded-2xl p-8"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            data-aos-duration="1000"
+          >
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-3.5 max-md:grid-cols-1">
                 <FormField

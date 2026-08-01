@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono, Poppins } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { ThemeToaster } from '@/components/theme-toaster'
+import { AosInit } from '@/components/aos-init'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -68,6 +69,7 @@ export default function RootLayout({
           {children}
           <ThemeToaster />
         </ThemeProvider>
+        <AosInit />
       </body>
     </html>
   )

@@ -11,7 +11,10 @@ export function Projects() {
     <section id="projects" className="bg-background py-24">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
-          <div className="flex items-end justify-between flex-wrap gap-4">
+          <div
+            className="flex items-end justify-between flex-wrap gap-4"
+            data-aos="fade-up"
+          >
             <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-foreground tracking-tight leading-tight">
               Projetos
             </h2>
@@ -29,11 +32,12 @@ export function Projects() {
 
         <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-4 max-md:grid-cols-1">
           {projectsData.map((project, i) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onImageClick={() => setLightbox({ projectIndex: i, imageIndex: 0 })}
-            />
+            <div key={project.id} data-aos="fade-up" data-aos-delay={i * 100}>
+              <ProjectCard
+                project={project}
+                onImageClick={() => setLightbox({ projectIndex: i, imageIndex: 0 })}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -62,7 +66,7 @@ function ProjectCard({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="rounded-xl overflow-hidden transition-all duration-250 flex flex-col"
+      className="h-full rounded-xl overflow-hidden transition-all duration-250 flex flex-col"
       style={{
         backgroundColor: hovered ? "var(--card-hover)" : "var(--card)",
         border: "1px solid",

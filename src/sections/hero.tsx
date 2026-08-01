@@ -3,7 +3,6 @@
 import Image from "next/image";
 import profile from "@/../public/assets/profilepicbetter.png";
 import { ArrowRight, Download, FileText } from "lucide-react";
-import { motion } from "motion/react";
 
 function LinkedinIcon() {
   return (
@@ -106,13 +105,7 @@ export function Hero() {
               </a>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex items-center gap-5 max-[900px]:justify-center"
-            >
+            <div className="flex items-center gap-5 max-[900px]:justify-center" data-aos="fade-up" data-aos-delay="300">
               <a
                 href="https://github.com/zsleinadg"
                 target="_blank"
@@ -142,7 +135,7 @@ export function Hero() {
                 Currículo
                 <FileText size={22} />
               </a>
-            </motion.div>
+            </div>
           </div>
 
           <div className="shrink-0 flex items-center justify-center relative max-[900px]:order-first">
