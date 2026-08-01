@@ -8,18 +8,18 @@ export function Projects() {
   const [lightbox, setLightbox] = useState<{ projectIndex: number; imageIndex: number } | null>(null);
 
   return (
-    <section id="projects" className="bg-[#08090D] py-24 border-t border-[#242733]">
+    <section id="projects" className="bg-background py-24 border-t border-border">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
           <div className="flex items-end justify-between flex-wrap gap-4">
-            <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-[#F5F5F7] tracking-tight leading-tight">
+            <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-foreground tracking-tight leading-tight">
               Projetos
             </h2>
             <a
               href="https://github.com/zsleinadg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-base font-semibold text-[#A78BFA] no-underline transition-opacity hover:opacity-80"
+              className="inline-flex items-center gap-1.5 text-base font-semibold text-accent no-underline transition-opacity hover:opacity-80"
             >
               Ver todos no GitHub
               <ArrowRight size={14} />
@@ -64,15 +64,15 @@ function ProjectCard({
       onMouseLeave={() => setHovered(false)}
       className="rounded-xl overflow-hidden transition-all duration-250 flex flex-col"
       style={{
-        backgroundColor: hovered ? "#151821" : "#11131A",
+        backgroundColor: hovered ? "var(--card-hover)" : "var(--card)",
         border: "1px solid",
-        borderColor: hovered ? "rgba(124,58,237,0.2)" : "#242733",
+        borderColor: hovered ? "rgba(124,58,237,0.2)" : "var(--border)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         boxShadow: hovered ? "0 12px 40px rgba(0,0,0,0.3)" : "none",
       }}
     >
       <div
-        className="h-45 relative flex items-center justify-center border-b border-[#242733] cursor-pointer overflow-hidden group"
+        className="h-45 relative flex items-center justify-center border-b border-border cursor-pointer overflow-hidden group"
         style={{
           background: "linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(79,70,229,0.06) 100%)",
         }}
@@ -111,11 +111,11 @@ function ProjectCard({
       </div>
 
       <div className="p-5 flex flex-col gap-3 flex-1">
-        <h3 className="text-[17px] font-bold text-[#F5F5F7] tracking-tight leading-tight">
+        <h3 className="text-[17px] font-bold text-foreground tracking-tight leading-tight">
           {project.title}
         </h3>
 
-        <p className="text-base text-[#6F7482] leading-relaxed flex-1">
+        <p className="text-base text-muted-foreground leading-relaxed flex-1">
           {project.shortDescription}
         </p>
 
@@ -123,20 +123,20 @@ function ProjectCard({
           {project.techs.slice(0, 6).map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] font-semibold text-[#6F7482] border border-[#242733] rounded px-2 py-0.5 bg-[#0D0F14]"
+              className="font-mono text-[10px] font-semibold text-muted-foreground border border-border rounded px-2 py-0.5 bg-muted"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-4 pt-1 border-t border-[#242733] mt-1">
+        <div className="flex gap-4 pt-1 border-t border-border mt-1">
           {project.linkProject && (
             <a
               href={project.linkProject}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-base font-semibold text-[#6F7482] no-underline py-1 transition-colors hover:text-[#A78BFA]"
+              className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
             >
               Ver projeto
               <ExternalLink size={13} />
@@ -147,7 +147,7 @@ function ProjectCard({
               href={project.linkRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-base font-semibold text-[#6F7482] no-underline py-1 transition-colors hover:text-[#A78BFA]"
+              className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
             >
               Código
               <GithubIcon />
@@ -186,7 +186,7 @@ function ProjectLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center"
+      className="fixed inset-0 z-100 bg-black/90 flex items-center justify-center"
       onClick={onClose}
     >
       <button

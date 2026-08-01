@@ -38,13 +38,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-[#0D0F14] py-24 border-t border-[#242733]">
+    <section id="contact" className="bg-muted py-24 border-t border-border">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-14 text-center">
-          <h2 className="text-[clamp(28px,4vw,42px)] font-bold text-[#F5F5F7] tracking-tight leading-tight mb-4">
+          <h2 className="text-[clamp(28px,4vw,42px)] font-bold text-foreground tracking-tight leading-tight mb-4">
             Vamos conversar?
           </h2>
-          <p className="text-sm text-[#6F7482] leading-relaxed max-w-120 mx-auto">
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-120 mx-auto">
             Estou disponível para projetos freelance, oportunidades de emprego e parcerias. Entre em contato!
           </p>
         </div>
@@ -65,13 +65,13 @@ export function Contact() {
               Chamar no WhatsApp
             </a>
 
-            <div className="flex gap-2.5 pt-2 border-t border-[#242733] mt-1">
+            <div className="flex gap-2.5 pt-2 border-t border-border mt-1">
               <SocialChip href="https://github.com/zsleinadg" label="GitHub" />
               <SocialChip href="https://www.linkedin.com/in/danielmunizworks/" label="LinkedIn" />
             </div>
           </div>
 
-          <div className="bg-[#11131A] border border-[#242733] rounded-2xl p-8">
+          <div className="bg-card border border-border rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-3.5 max-md:grid-cols-1">
                 <FormField
@@ -100,7 +100,7 @@ export function Contact() {
                 onChange={(v) => setForm({ ...form, subject: v })}
               />
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-[#A1A5B3] tracking-wide">
+                <label className="text-xs font-semibold text-muted-foreground tracking-wide">
                   Mensagem
                 </label>
                 <textarea
@@ -111,13 +111,13 @@ export function Contact() {
                   autoComplete="off"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="font-sans text-sm text-[#F5F5F7] bg-[#0D0F14] border border-[#242733] rounded-lg px-3.5 py-3 outline-none resize-y leading-relaxed transition-colors duration-200 focus:border-[rgba(124,58,237,0.5)]"
+                  className="font-sans text-sm text-foreground bg-muted border border-border rounded-lg px-3.5 py-3 outline-none resize-y leading-relaxed transition-colors duration-200 focus:border-[rgba(124,58,237,0.5)]"
                 />
               </div>
               <button
                 type="submit"
                 disabled={sending}
-                className="inline-flex items-center justify-center gap-2 bg-[#7C3AED] text-[#F5F5F7] border-none rounded-lg px-6 py-3 text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-[#8B5CF6] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0 mt-1"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground border-none rounded-lg px-6 py-3 text-sm font-bold cursor-pointer transition-all duration-200 hover:bg-[#8B5CF6] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0 mt-1"
               >
                 <Send size={15} />
                 {sending ? "Enviando..." : "Enviar mensagem"}
@@ -149,7 +149,7 @@ function FormField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-semibold text-[#A1A5B3] tracking-wide">
+      <label className="text-xs font-semibold text-muted-foreground tracking-wide">
         {label}
       </label>
       <input
@@ -160,7 +160,7 @@ function FormField({
         autoComplete={autoComplete}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="font-sans text-sm text-[#F5F5F7] bg-[#0D0F14] border border-[#242733] rounded-lg px-3.5 py-2.5 outline-none transition-colors duration-200 focus:border-[rgba(124,58,237,0.5)]"
+        className="font-sans text-sm text-foreground bg-muted border border-border rounded-lg px-3.5 py-2.5 outline-none transition-colors duration-200 focus:border-[rgba(124,58,237,0.5)]"
       />
     </div>
   );
@@ -168,13 +168,13 @@ function FormField({
 
 function ContactInfo({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="bg-[#11131A] border border-[#242733] rounded-xl px-5 py-4 flex items-center gap-3.5">
-      <div className="w-9 h-9 rounded-lg bg-[rgba(124,58,237,0.12)] border border-[rgba(124,58,237,0.2)] flex items-center justify-center text-[#A78BFA] shrink-0">
+    <div className="bg-card border border-border rounded-xl px-5 py-4 flex items-center gap-3.5">
+      <div className="w-9 h-9 rounded-lg bg-[rgba(124,58,237,0.12)] border border-[rgba(124,58,237,0.2)] flex items-center justify-center text-accent shrink-0">
         {icon}
       </div>
       <div>
-        <p className="text-[11px] text-[#6F7482] font-medium">{label}</p>
-        <p className="text-sm text-[#F5F5F7] font-semibold">{value}</p>
+        <p className="text-[11px] text-muted-foreground font-medium">{label}</p>
+        <p className="text-sm text-foreground font-semibold">{value}</p>
       </div>
     </div>
   );
@@ -186,7 +186,7 @@ function SocialChip({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-[#6F7482] no-underline border border-[#242733] rounded-lg px-4 py-2.5 bg-[#11131A] transition-all duration-200 hover:border-[rgba(124,58,237,0.3)] hover:text-[#A78BFA]"
+      className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-muted-foreground no-underline border border-border rounded-lg px-4 py-2.5 bg-card transition-all duration-200 hover:border-[rgba(124,58,237,0.3)] hover:text-accent"
     >
       {label}
     </a>

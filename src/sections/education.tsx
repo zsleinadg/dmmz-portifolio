@@ -21,10 +21,10 @@ const educationData = courses.map((c, i) => ({
 
 export function Education() {
   return (
-    <section id="education" className="bg-[#0D0F14] py-24 border-t border-[#242733]">
+    <section id="education" className="bg-muted py-24 border-t border-border">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="mb-12">
-          <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-[#F5F5F7] tracking-tight leading-tight">
+          <h2 className="text-[clamp(28px,4vw,38px)] font-bold text-foreground tracking-tight leading-tight">
             Formação e Cursos
           </h2>
         </div>
@@ -49,9 +49,9 @@ function EducationCard({ edu }: { edu: typeof educationData[0] }) {
       onMouseLeave={() => setHovered(false)}
       className="rounded-xl p-6 flex flex-col gap-4 transition-all duration-200"
       style={{
-        backgroundColor: hovered ? "#151821" : "#11131A",
+        backgroundColor: hovered ? "var(--card-hover)" : "var(--card)",
         border: "1px solid",
-        borderColor: hovered ? "rgba(124,58,237,0.25)" : "#242733",
+        borderColor: hovered ? "rgba(124,58,237,0.25)" : "var(--border)",
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
     >
@@ -78,10 +78,10 @@ function EducationCard({ edu }: { edu: typeof educationData[0] }) {
       </div>
 
       <div>
-        <p className="text-[11px] text-[#6F7482] font-medium uppercase tracking-wider mb-1">
+        <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider mb-1">
           {edu.institution}
         </p>
-        <h3 className="text-base font-bold text-[#F5F5F7] leading-tight tracking-tight">
+        <h3 className="text-base font-bold text-foreground leading-tight tracking-tight">
           {edu.course}
         </h3>
       </div>

@@ -1,7 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
-import { Toaster } from 'sonner'
+import { ThemeProvider } from 'next-themes'
+import { ThemeToaster } from '@/components/theme-toaster'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -51,20 +52,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br" className="dark">
+    <html lang="pt-br" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        {children}
-        <Toaster
-          theme="dark"
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: '#11131A',
-              border: '1px solid #242733',
-              color: '#F5F5F7',
-            },
-          }}
-        />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          {children}
+          <ThemeToaster />
+        </ThemeProvider>
       </body>
     </html>
   )

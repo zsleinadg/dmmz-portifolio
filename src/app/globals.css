@@ -3,6 +3,23 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --background: #f5f5f5;
+  --foreground: #1F2937;
+  --card: #ffffff;
+  --card-foreground: #1F2937;
+  --muted: #e5e5e5;
+  --muted-foreground: #6B7280;
+  --border: #E5E7EB;
+  --accent: #7C3AED;
+  --accent-foreground: #ffffff;
+  --card-hover: #f7f7f7;
+  --float-bg: rgba(0,0,0,0.04);
+  --float-border: rgba(0,0,0,0.15);
+  --grid-line: rgba(0,0,0,0.06);
+  --radius: 0.625rem;
+}
+
+.dark {
   --background: #08090D;
   --foreground: #F5F5F7;
   --card: #11131A;
@@ -12,7 +29,10 @@
   --border: #242733;
   --accent: #7C3AED;
   --accent-foreground: #F5F5F7;
-  --radius: 0.625rem;
+  --card-hover: #151821;
+  --float-bg: rgba(255,255,255,0.04);
+  --float-border: rgba(255,255,255,0.25);
+  --grid-line: rgba(36,39,51,0.15);
 }
 
 @theme inline {
@@ -34,6 +54,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {

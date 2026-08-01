@@ -12,7 +12,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#08090D] border-t border-[#242733] py-12 pb-8">
+    <footer className="bg-background border-t border-border py-12 pb-8">
       <div className="max-w-310 mx-auto px-10 max-md:px-5">
         <div className="flex items-center justify-between flex-wrap gap-6 mb-10">
           <a
@@ -27,7 +27,7 @@ export function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-xs font-medium text-[#6F7482] px-2.5 py-1.5 rounded-md transition-colors hover:text-[#A1A5B3] no-underline"
+                className="text-xs font-medium text-muted-foreground px-2.5 py-1.5 rounded-md transition-colors hover:text-foreground no-underline"
               >
                 {link.label}
               </a>
@@ -41,13 +41,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="h-px bg-[#242733] mb-6" />
+        <div className="h-px bg-border mb-6" />
 
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <p className="text-xs text-[#6F7482]">
+          <p className="text-xs text-muted-foreground">
             &copy; {currentYear} Daniel Marques. Todos os direitos reservados.
           </p>
-          <p className="font-mono text-[11px] text-[#6F7482]">
+          <p className="font-mono text-[11px] text-muted-foreground">
             Desenvolvido com Next.js + TypeScript
           </p>
         </div>
@@ -63,7 +63,7 @@ function SocialIcon({ href, icon, label }: { href: string; icon: React.ReactNode
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="w-9 h-9 rounded-lg border border-[#242733] bg-[#11131A] flex items-center justify-center text-[#6F7482] no-underline transition-all duration-200 hover:border-[rgba(124,58,237,0.3)] hover:text-[#A78BFA]"
+      className="w-9 h-9 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground no-underline transition-all duration-200 hover:border-[rgba(124,58,237,0.3)] hover:text-accent"
     >
       {icon}
     </a>
