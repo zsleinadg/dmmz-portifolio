@@ -1,11 +1,26 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import { AosInit } from '../components/aos-init'
+import { Inter, JetBrains_Mono, Poppins } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
+import { ThemeToaster } from '@/components/theme-toaster'
+import { AosInit } from '@/components/aos-init'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+})
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
+  variable: '--font-poppins',
 })
 
 export const metadata: Metadata = {
@@ -44,9 +59,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body className={poppins.className}>
-        {children}
+    <html lang="pt-br" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${poppins.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          {children}
+          <ThemeToaster />
+        </ThemeProvider>
         <AosInit />
       </body>
     </html>
