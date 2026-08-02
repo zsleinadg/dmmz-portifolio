@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { projectsData } from "@/data/projects";
 import { ExternalLink, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ProjectCarousel } from "@/components/project-carousel";
 
 export function Projects() {
   const [lightbox, setLightbox] = useState<{ projectIndex: number; imageIndex: number } | null>(null);
+  const [descriptionProject, setDescriptionProject] = useState<{ project: typeof projectsData[0]; index: number } | null>(null);
 
   return (
     <section id="projects" className="bg-background py-24">
@@ -30,15 +32,102 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-4 max-md:grid-cols-1">
-          {projectsData.map((project, i) => (
-            <div key={project.id} data-aos="fade-up" data-aos-delay={i * 100}>
-              <ProjectCard
-                project={project}
-                onImageClick={() => setLightbox({ projectIndex: i, imageIndex: 0 })}
-              />
+        <div className="flex flex-col gap-20 lg:hidden">
+          {projectsData.map((project, index) => (
+            <div
+              key={project.id}
+              className="flex flex-col gap-5"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div className="rounded-xl overflow-hidden border border-border bg-card shadow-lg">
+                <ProjectCarousel
+                  images={project.images}
+                  priority={index === 0}
+                  onImageClick={(imageIndex) =>
+                    setLightbox({ projectIndex: index, imageIndex })
+                  }
+                />
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h3 className="text-2xl font-bold text-foreground tracking-tight leading-tight">
+                  {project.title}
+                </h3>
+
+                <p className="text-sm italic leading-relaxed text-muted-foreground">
+                  {project.shortDescription}
+                </p>
+
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+
+                {(project.badges ?? []).length > 0 && (
+                  <div className="flex gap-1.5 flex-wrap">
+                    {project.badges!.map((badge) => (
+                      <span
+                        key={badge}
+                        className="font-mono text-[10px] font-semibold text-accent bg-accent/10 border border-accent/15 rounded px-2 py-0.5"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="flex gap-1.5 flex-wrap">
+                  {project.techs.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] font-semibold text-muted-foreground border border-border rounded px-2 py-0.5 bg-muted"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-4 mt-1">
+                  {project.linkProject && (
+                    <a
+                      href={project.linkProject}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
+                    >
+                      Ver projeto
+                      <ExternalLink size={13} />
+                    </a>
+                  )}
+                  {project.linkRepo && project.linkRepo !== "#" && (
+                    <a
+                      href={project.linkRepo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
+                    >
+                      Código
+                      <GithubIcon />
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-4 max-md:grid-cols-1">
+            {projectsData.map((project, i) => (
+              <div key={project.id} data-aos="fade-up" data-aos-delay={i * 100}>
+                <ProjectCard
+                  project={project}
+                  onImageClick={() => setLightbox({ projectIndex: i, imageIndex: 0 })}
+                  onDescriptionClick={() => setDescriptionProject({ project, index: i })}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -49,6 +138,16 @@ export function Projects() {
           onClose={() => setLightbox(null)}
         />
       )}
+
+      {descriptionProject && (
+        <ProjectDescriptionModal
+          project={descriptionProject.project}
+          onImageClick={(imageIndex) =>
+            setLightbox({ projectIndex: descriptionProject.index, imageIndex })
+          }
+          onClose={() => setDescriptionProject(null)}
+        />
+      )}
     </section>
   );
 }
@@ -56,9 +155,11 @@ export function Projects() {
 function ProjectCard({
   project,
   onImageClick,
+  onDescriptionClick,
 }: {
   project: typeof projectsData[0];
   onImageClick: () => void;
+  onDescriptionClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -101,9 +202,13 @@ function ProjectCard({
           {project.title}
         </h3>
 
-        <p className="text-base text-muted-foreground leading-relaxed flex-1">
+        <p
+          className="text-base text-muted-foreground leading-relaxed flex-1"
+        >
           {project.shortDescription}
+          
         </p>
+        <span onClick={onDescriptionClick} className=" text-base text-accent font-semibold cursor-pointer transition-colors hover:text-accent"> ver descrição completa</span>
 
         {(project.badges ?? []).length > 0 && (
           <div className="flex gap-1.5 flex-wrap">
@@ -220,7 +325,7 @@ function ProjectLightbox({
       )}
 
       <div
-        className="relative w-[90vw] max-w-[1600px] h-[85vh] flex items-center justify-center"
+        className="relative w-[90vw] max-w-400 h-[85vh] flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -231,6 +336,64 @@ function ProjectLightbox({
         <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm text-white/50 select-none">
           {index + 1} / {project.images.length}
         </p>
+      </div>
+    </div>
+  );
+}
+
+function ProjectDescriptionModal({
+  project,
+  onImageClick,
+  onClose,
+}: {
+  project: typeof projectsData[0];
+  onImageClick: (imageIndex: number) => void;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-100 bg-black/90 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="relative flex flex-col items-center w-full max-w-200 max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 cursor-pointer border-none z-20 transition-colors"
+          aria-label="Fechar"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="w-full">
+          <ProjectCarousel images={project.images} onImageClick={onImageClick} />
+        </div>
+
+        <div className="w-full bg-card rounded-b-2xl p-8">
+          <h3 className="text-xl font-bold text-foreground tracking-tight leading-tight pr-8">
+            {project.title}
+          </h3>
+          <p className="mt-3 text-sm italic leading-relaxed text-muted-foreground">
+            {project.shortDescription}
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+            {project.description}
+          </p>
+        </div>
       </div>
     </div>
   );
