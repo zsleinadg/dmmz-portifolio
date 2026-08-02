@@ -180,7 +180,11 @@ function ProjectLightbox({
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
   }, [project.images.length, onClose]);
 
   return (
@@ -215,13 +219,16 @@ function ProjectLightbox({
         </>
       )}
 
-      <div className="max-w-5xl max-h-[90vh] mx-4" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="relative w-[90vw] max-w-[1600px] h-[85vh] flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
         <img
           src={project.images[index]}
           alt={`${project.title} - ${index + 1}`}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg"
+          className="max-w-full max-h-full object-contain rounded-lg"
         />
-        <p className="text-center text-sm text-white/50 mt-2">
+        <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm text-white/50 select-none">
           {index + 1} / {project.images.length}
         </p>
       </div>
