@@ -19,6 +19,9 @@
   --float-bg: rgba(0,0,0,0.04);
   --float-border: rgba(0,0,0,0.15);
   --grid-line: rgba(0,0,0,0.06);
+  --scrollbar-track: #ececec;
+  --scrollbar-thumb: #c9c9d1;
+  --scrollbar-thumb-hover: #a9a9b3;
   --radius: 0.625rem;
 }
 
@@ -39,6 +42,9 @@
   --float-bg: rgba(255,255,255,0.04);
   --float-border: rgba(255,255,255,0.25);
   --grid-line: rgba(36,39,51,0.15);
+  --scrollbar-track: #101218;
+  --scrollbar-thumb: #2E2A3B;
+  --scrollbar-thumb-hover: #3d3852;
 }
 
 @theme inline {
@@ -79,5 +85,28 @@ section[id] {
 @layer base {
   * {
     border-color: var(--border);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
   }
 }
