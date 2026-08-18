@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: 'Daniel Marques - Portfolio',
     images: [
       {
-        url: '/assets/opengraph-image.png',
+        url: '/assets/opengraph-image.webp',
         width: 1200,
         height: 630,
         alt: 'Preview do Portfólio de Daniel Marques',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Daniel Marques - Desenvolvedor Full-Stack',
     description: 'Portfolio de Daniel Marques - Desenvolvedor Full-Stack',
-    images: ['/assets/opengraph-image.png'],
+    images: ['/assets/opengraph-image.webp'],
   },
 }
 
