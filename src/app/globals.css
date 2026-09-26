@@ -82,6 +82,78 @@ section[id] {
   scroll-margin-top: 5rem;
 }
 
+@theme {
+  --animate-float-tag: floatTag 3s ease-in-out infinite;
+  --animate-glitch: glitchEffect 0.5s ease-in-out;
+
+  @keyframes floatTag {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes glitchEffect {
+    0% {
+      transform: translate(0, 0) skew(0deg);
+      opacity: 1;
+      filter: hue-rotate(0deg);
+    }
+    20% {
+      transform: translate(-6px, 3px) skew(-6deg);
+      opacity: 0.75;
+      filter: hue-rotate(90deg);
+    }
+    40% {
+      transform: translate(6px, -3px) skew(6deg);
+      opacity: 0.85;
+      filter: hue-rotate(180deg);
+    }
+    60% {
+      transform: translate(-4px, -2px) skew(-3deg);
+      opacity: 0.6;
+      filter: hue-rotate(270deg);
+    }
+    80% {
+      transform: translate(4px, 2px) skew(3deg);
+      opacity: 0.9;
+      filter: hue-rotate(90deg);
+    }
+    100% {
+      transform: translate(0, 0) skew(0deg);
+      opacity: 1;
+      filter: hue-rotate(0deg);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-glitch {
+    animation: glitchEffect 0.5s ease-in-out;
+  }
+
+  .animate-float-tag {
+    animation: floatTag 3s ease-in-out infinite;
+  }
+}
+
+.tilt-scene {
+  perspective: 1000px;
+}
+
+.tilt-inner {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-glitch,
+  .animate-float-tag,
+  .tilt-inner {
+    animation: none;
+    transition: none;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--border);
