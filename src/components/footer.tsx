@@ -23,7 +23,7 @@ export function Footer() {
           DM
         </button>
 
-        <p className="text-center">© {currentYear} • Daniel Marques</p>
+        <p className="text-center">© {currentYear} • Daniel Muniz</p>
 
         <nav className="flex items-center opacity-75 gap-5">
           {socialLinks.map((link) => (
