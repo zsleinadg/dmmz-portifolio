@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { projectsData } from "@/data/projects";
 import type { CaseSection } from "@/types";
-import { ExternalLink, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ArrowRight, X } from "lucide-react";
 import { ProjectCarousel } from "@/components/project-carousel";
+import { ProjectLightbox } from "@/components/project-lightbox";
 import { GithubIcon } from "@/components/icons";
 
 type TabId = "overview" | "problem" | "solution" | "architecture";
@@ -47,94 +48,17 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-20 lg:hidden">
+        <div className="flex flex-col gap-12 lg:hidden">
           {projectsData.map((project, index) => (
-            <div
+            <MobileProjectCard
               key={project.id}
-              className="flex flex-col gap-5"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              <div className="rounded-xl overflow-hidden border border-border bg-card shadow-lg">
-                <ProjectCarousel
-                  images={project.images}
-                  priority={index === 0}
-                  onImageClick={(imageIndex) =>
-                    setLightbox({ projectIndex: index, imageIndex })
-                  }
-                />
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h3 className="text-2xl font-bold text-foreground tracking-tight leading-tight">
-                  {project.title}
-                </h3>
-
-                <p className="text-sm italic leading-relaxed text-muted-foreground">
-                  {project.shortDescription}
-                </p>
-
-                <p className="text-base leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
-
-                {(project.badges ?? []).length > 0 && (
-                  <div className="flex gap-1.5 flex-wrap">
-                    {project.badges!.map((badge) => (
-                      <span
-                        key={badge}
-                        className="font-mono text-[10px] font-semibold text-accent bg-accent/10 border border-accent/15 rounded px-2 py-0.5"
-                      >
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex gap-1.5 flex-wrap">
-                  {project.techs.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-mono text-[10px] font-semibold text-muted-foreground border border-border rounded px-2 py-0.5 bg-muted"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => openCase(project, index)}
-                  className="mt-1 inline-flex items-center justify-center gap-2 bg-accent/10 text-accent border border-accent/20 rounded-lg px-4 py-2.5 text-sm font-bold cursor-pointer transition-colors hover:bg-accent/20"
-                >
-                  Problema • Solução • Arquitetura
-                </button>
-
-                <div className="flex gap-4 mt-1">
-                  {project.linkProject && (
-                    <a
-                      href={project.linkProject}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
-                    >
-                      Ver projeto
-                      <ExternalLink size={13} />
-                    </a>
-                  )}
-                  {project.linkRepo && project.linkRepo !== "#" && (
-                    <a
-                      href={project.linkRepo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
-                    >
-                      Código
-                      <GithubIcon size={13} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+              project={project}
+              index={index}
+              onImageClick={(imageIndex) =>
+                setLightbox({ projectIndex: index, imageIndex })
+              }
+              onOpenCase={() => openCase(project, index)}
+            />
           ))}
         </div>
 
@@ -155,7 +79,8 @@ export function Projects() {
 
       {lightbox && (
         <ProjectLightbox
-          project={projectsData[lightbox.projectIndex]}
+          images={projectsData[lightbox.projectIndex].images}
+          title={projectsData[lightbox.projectIndex].title}
           initialIndex={lightbox.imageIndex}
           onClose={() => setLightbox(null)}
         />
@@ -171,6 +96,113 @@ export function Projects() {
         />
       )}
     </section>
+  );
+}
+
+function MobileProjectCard({
+  project,
+  index,
+  onImageClick,
+  onOpenCase,
+}: {
+  project: typeof projectsData[0];
+  index: number;
+  onImageClick: (imageIndex: number) => void;
+  onOpenCase: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div
+      className="flex flex-col gap-4"
+      data-aos="fade-up"
+      data-aos-delay={index * 100}
+    >
+      <div className="rounded-xl overflow-hidden border border-border bg-card shadow-lg">
+        <ProjectCarousel
+          images={project.images}
+          priority={index === 0}
+          onImageClick={onImageClick}
+        />
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <h3 className="text-xl font-bold text-foreground tracking-tight leading-tight">
+          {project.title}
+        </h3>
+
+        <p className="text-sm italic leading-relaxed text-muted-foreground">
+          {project.shortDescription}
+        </p>
+
+        <p className={`text-sm leading-relaxed text-muted-foreground ${expanded ? "" : "line-clamp-3"}`}>
+          {project.description}
+        </p>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="self-start text-sm font-semibold text-accent bg-none border-none cursor-pointer p-0 hover:opacity-80 transition-opacity"
+        >
+          {expanded ? "Ler menos" : "Ler mais"}
+        </button>
+
+        {(project.badges ?? []).length > 0 && (
+          <div className="flex gap-1.5 flex-wrap">
+            {project.badges!.map((badge) => (
+              <span
+                key={badge}
+                className="font-mono text-[10px] font-semibold text-accent bg-accent/10 border border-accent/15 rounded px-2 py-0.5"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-1.5 flex-wrap">
+          {project.techs.map((tag) => (
+            <span
+              key={tag}
+              className="font-mono text-[10px] font-semibold text-muted-foreground border border-border rounded px-2 py-0.5 bg-muted"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <button
+          onClick={onOpenCase}
+          className="mt-1 inline-flex items-center justify-center gap-2 bg-accent/10 text-accent border border-accent/20 rounded-lg px-4 py-2.5 text-sm font-bold cursor-pointer transition-colors hover:bg-accent/20"
+        >
+          Problema • Solução • Arquitetura
+        </button>
+
+        <div className="flex gap-4 mt-1">
+          {project.linkProject && (
+            <a
+              href={project.linkProject}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
+            >
+              Ver projeto
+              <ExternalLink size={13} />
+            </a>
+          )}
+          {project.linkRepo && project.linkRepo !== "#" && (
+            <a
+              href={project.linkRepo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-base font-semibold text-muted-foreground no-underline py-1 transition-colors hover:text-accent"
+            >
+              Código
+              <GithubIcon size={13} />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -281,83 +313,6 @@ function ProjectCard({
           )}
 
         </div>
-      </div>
-    </div>
-  );
-}
-
-function ProjectLightbox({
-  project,
-  initialIndex,
-  onClose,
-}: {
-  project: typeof projectsData[0];
-  initialIndex: number;
-  onClose: () => void;
-}) {
-  const [index, setIndex] = useState(initialIndex);
-
-  const prev = () => setIndex((i) => (i > 0 ? i - 1 : project.images.length - 1));
-  const next = () => setIndex((i) => (i < project.images.length - 1 ? i + 1 : 0));
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [project.images.length, onClose]);
-
-  return (
-    <div
-      className="fixed inset-0 z-100 bg-black/90 flex items-center justify-center"
-      onClick={onClose}
-    >
-      <button
-        onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute top-4 right-4 text-white/60 hover:text-white bg-none border-none cursor-pointer p-2 z-10"
-        aria-label="Fechar"
-      >
-        <X size={28} />
-      </button>
-
-      {project.images.length > 1 && (
-        <>
-          <button
-            onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-4 text-white/60 hover:text-white bg-none border-none cursor-pointer p-2 z-10"
-            aria-label="Anterior"
-          >
-            <ChevronLeft size={36} />
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-4 text-white/60 hover:text-white bg-none border-none cursor-pointer p-2 z-10"
-            aria-label="Próximo"
-          >
-            <ChevronRight size={36} />
-          </button>
-        </>
-      )}
-
-      <div
-        className="relative w-[90vw] max-w-400 h-[85vh] flex items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={project.images[index]}
-          alt={`${project.title} - ${index + 1}`}
-          className="max-w-full max-h-full object-contain rounded-lg"
-        />
-        <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm text-white/50 select-none">
-          {index + 1} / {project.images.length}
-        </p>
       </div>
     </div>
   );
