@@ -31,6 +31,7 @@ export function Hero() {
   const titles = [
     { line1: "Desenvolvedor", line2: "Full-Stack" },
     { line1: "Analista de", line2: "Sistemas" },
+    { line1: "Engenheiro de", line2: "Software" },
   ];
 
   const [titleIndex, setTitleIndex] = useState(0);
