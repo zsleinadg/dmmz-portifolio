@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://dmmz.vercel.app'),
   title: 'Daniel Muniz - Desenvolvedor Full-Stack',
   description: 'Desenvolvedor Full-Stack focado em soluções completas, do front-end ao back-end.',
-  keywords: ['Desenvolvedor', 'Full-Stack', 'React', 'Next.js', 'Node.js', 'TypeScript', 'Portfolio'],
+  keywords: ['Desenvolvedor', 'Full-Stack', 'React', 'Next.js', 'Node.js', 'TypeScript', 'Portfolio', 'Docker', 'CI/CD', 'Jest', 'IA', 'LLMs', 'Stripe', 'n8n'],
   authors: [{ name: 'Daniel Muniz' }],
   openGraph: {
     title: 'Daniel Muniz - Desenvolvedor Full-Stack',
@@ -61,6 +61,7 @@ const jsonLd = {
   name: 'Daniel Muniz',
   url: 'https://dmmz.vercel.app',
   jobTitle: 'Desenvolvedor Full-Stack & Analista de Sistemas',
+  knowsAbout: ['TypeScript', 'React', 'Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Docker', 'CI/CD', 'Jest', 'LLMs', 'Stripe', 'n8n'],
   sameAs: [
     'https://github.com/zsleinadg',
     'https://www.linkedin.com/in/danielmunizworks/',

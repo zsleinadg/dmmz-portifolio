@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "Sobre mim", href: "#about" },
   { label: "Projetos", href: "#projects" },
   { label: "Habilidades", href: "#skills" },
+  { label: "IA", href: "#tooling" },
   { label: "Formação", href: "#education" },
   { label: "Contato", href: "#contact" },
 ];
