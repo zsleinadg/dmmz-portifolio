@@ -134,7 +134,7 @@ export function Tooling() {
           </div>
 
           <div
-            className="lg:col-span-3 rounded-2xl border border-border bg-card p-2 min-h-87.5 relative overflow-hidden group shadow-sm cursor-pointer"
+            className="lg:col-span-3 rounded-2xl border border-border bg-card p-2 max-lg:aspect-3/2 lg:min-h-87.5 relative overflow-hidden group shadow-sm cursor-pointer"
             onClick={() => setZoomOpen(true)}
             role="button"
             tabIndex={0}
